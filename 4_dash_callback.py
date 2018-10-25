@@ -28,7 +28,7 @@ dropdownmenu = dcc.Dropdown(id='dropdown',
         dict(label='Cosine',value='cos'),
         dict(label='Tangent',value='tan')
     ],
-    value='Sine' # This is the default value to appear in the dropdown menu
+    value='sin' # This is the default value to appear in the dropdown menu
 )
 
 ## Plot
@@ -63,7 +63,8 @@ plot_data = [trace_sin, trace_cos, trace_tan]
 plot_layout = go.Layout(
     title='Trigonometry',
     xaxis=dict(title='x (degrees)'),
-    yaxis=dict(title='Trigonometric function',range=[-1.,1.])
+    yaxis=dict(title='Trigonometric function',range=[-1.,1.]),
+    showlegend=True
 )
 
 # Layout for the plot
@@ -79,9 +80,10 @@ dash_app.layout = html.Div([md,dropdownmenu,plot])
 @dash_app.callback(
     Output(component_id='trig_plot',component_property='figure'),
     [Input(component_id='dropdown', component_property='value')])
+
 def update_plot(input_value):
-    trace = 'trace_'+str(input_value)
-    figure2update = dict(data=trace,layout=plot_layout)
+    plot_data = [eval('trace_'+str(input_value))]
+    figure2update = dict(data=plot_data,layout=plot_layout)
     return figure2update
 
 # Run the application: you will get a message of the link to put in your browser to see the result

@@ -1,0 +1,11 @@
+*~
+[#]*[#]
+.\#*
+*.pyc
+*.log
+*.aux
+*.out
+auto/
+.ipynb_checkpoints/
+test/
+*.html

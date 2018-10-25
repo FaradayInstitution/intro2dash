@@ -56,8 +56,7 @@ trace_tan = go.Scatter(
             name = 'Tangent', 
 )
 
-#plot_data = [trace_sin, trace_cos, trace_tan]
-plot_data = [trace_tan]
+plot_data = [trace_sin, trace_cos, trace_tan]
 
 # We define the plot layout using the plotly function `go.Layout`.
 plot_layout = go.Layout(
